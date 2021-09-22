@@ -1,0 +1,33 @@
+{
+  "properties": [
+    {
+      "name": "aplicacao.nome",
+      "type": "java.lang.String",
+      "description": "A description for 'aplicacao.nome'"
+    },
+    {
+      "name": "aplicacao.descricao",
+      "type": "java.lang.String",
+      "description": "A description for 'aplicacao.descricao'"
+    },
+    {
+      "name": "aplicacao.versao",
+      "type": "java.lang.String",
+      "description": "A description for 'aplicacao.versao'"
+    },
+    {
+      "name": "aplicacao.jwt.secret",
+      "type": "java.lang.String",
+      "description": "A description for 'aplicacao.jwt.secret'"
+    },
+    {
+      "name": "aplicacao.jwt.validity",
+      "type": "java.lang.String",
+      "description": "A description for 'aplicacao.jwt.validity'"
+    },
+    {
+      "name": "cliente-application.allows-origin",
+      "type": "java.lang.String",
+      "description": "Description for cliente-application.allows-origin."
+  }
+]}
