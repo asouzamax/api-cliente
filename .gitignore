@@ -1,6 +1,7 @@
 # eclipse specific git ignore
 *.pydevproject
 .project
+.idea
 .metadata
 target/
 **/target/
