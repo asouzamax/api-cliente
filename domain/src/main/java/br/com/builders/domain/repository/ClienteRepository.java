@@ -4,5 +4,5 @@ import br.com.builders.domain.entity.Cliente;
 
 public interface ClienteRepository extends Repository<Cliente>{
 
-
+    boolean ehClienteComNomeJaExistente(String nome, String ultimoNome);
 }

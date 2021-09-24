@@ -1,0 +1,26 @@
+aplicacao:
+  nome: '@project.name@'
+  descricao: '@project.description@'
+  versao: '@project.version@'
+
+spring.jpa.generate-ddl: true
+spring.jpa.hibernate.ddl-auto: update
+
+spring:
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+    url: jdbc:h2:mem:clientedbteste
+    username: h2
+    password:
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    baseline-on-migrate: true

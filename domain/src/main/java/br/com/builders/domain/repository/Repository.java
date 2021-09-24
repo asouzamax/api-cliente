@@ -1,9 +1,11 @@
 package br.com.builders.domain.repository;
 
 import br.com.builders.domain.entity.BaseEntity;
+import br.com.builders.domain.entity.Cliente;
 
 public interface Repository<T extends BaseEntity> {
-	T save(T t);
-	void delete(T t);
+
+    Cliente save(Cliente t);
+    void delete(Cliente t);
 
 }
