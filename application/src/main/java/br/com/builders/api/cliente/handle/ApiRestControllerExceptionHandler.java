@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
 import br.com.builders.api.cliente.exception.BusinessHttpExcception;
-import br.com.builders.api.cliente.exception.ClienteJaCadastradoException;
+import br.com.builders.domain.exception.ClienteJaCadastradoException;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;

@@ -7,18 +7,17 @@ import static org.mockito.Mockito.when;
 import java.util.UUID;
 
 import br.com.builders.domain.entity.Cliente;
+import br.com.builders.domain.exception.ClienteJaCadastradoException;
+import br.com.builders.domain.exception.ClienteValidationException;
 import br.com.builders.domain.repository.ClienteRepository;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import br.com.builders.domain.entity.IdGenerator;
 import br.com.builders.domain.usercase.CadastrarClienteService;
 
-/**
- * Unit test for simple App.
- */
 public class CadastrarClienteTest {
 
 	private CadastrarClienteService cadastrarClienteService;
@@ -36,20 +35,20 @@ public class CadastrarClienteTest {
 
 	@Test
 	public void deveCadastrarCliente() {
-		Cliente Cliente = createCliente();
+		Cliente cliente = createCliente();
 
-		when(clienteRepository.save(Cliente)).thenReturn(Cliente);
+		when(clienteRepository.save(cliente)).thenReturn(cliente);
 		when(idGenerator.generate()).thenReturn(UUID.randomUUID().toString());
 
-		cadastrarClienteService.execute(Cliente);
+		cadastrarClienteService.execute(cliente);
 
-		verify(clienteRepository).save(Cliente);
+		verify(clienteRepository).save(cliente);
 	}
 
-	/*@Test
+	@Test
 	public void naoDeveCadastrarClienteSemNome() {
 		Cliente cliente = createCliente();
-		cliente.
+		cliente.setNome (null);
 
 		ClienteValidationException thrown = Assertions.assertThrows(ClienteValidationException.class,
 				() -> cadastrarClienteService.execute(cliente));
@@ -57,13 +56,12 @@ public class CadastrarClienteTest {
 		when(clienteRepository.save(Mockito.any())).thenThrow(RuntimeException.class);
 		when(idGenerator.generate()).thenReturn(UUID.randomUUID().toString());
 
-		assertTrue(thrown.getMessage().contains("Deve haver pelo menos um item no Cliente."));
+		assertTrue(thrown.getMessage().contains("O nome do cliente não pode estar vazio."));
 
-	}*/
+	}
 
 	private Cliente createCliente() {
-		Cliente cliente = Cliente.builder ().idade (30).nome ("Teste").ultimoNome ("Cliente").build();
-		return cliente;
+		return Cliente.builder ().idade (30).nome ("Teste").ultimoNome ("Cliente").build();
 	}
 
 }

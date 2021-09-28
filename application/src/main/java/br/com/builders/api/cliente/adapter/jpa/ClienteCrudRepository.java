@@ -30,20 +30,21 @@ public class ClienteCrudRepository implements ClienteRepository {
     @Override
     @Transactional
     public void delete(Cliente cliente){
-        em.remove (getT (cliente));
+        ClienteEntity clienteEntity = getT (cliente);
+        clienteEntity = em.find (ClienteEntity.class, clienteEntity.getUuid ());
+        em.remove (clienteEntity);
     }
 
     @Override
     public boolean ehClienteComNomeJaExistente(String primeiroNome, String ultimoNome){
         try{
             StringBuilder hql = new StringBuilder();
-            Map<String, Object> params = new HashMap<String, Object> ();
             hql.append("Select p from ClienteEntity p WHERE p.nome = :nome and ultimoNome = :ultimoNome");
 
             Query query = em.createQuery(hql.toString());
             query.setParameter("nome", primeiroNome);
             query.setParameter("ultimoNome", ultimoNome);
-            return query.getSingleResult () != null ? true : false;
+            return query.getSingleResult () != null;
         }
         catch(NoResultException e){
             return false;

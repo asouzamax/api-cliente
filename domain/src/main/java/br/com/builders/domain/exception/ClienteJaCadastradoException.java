@@ -1,4 +1,4 @@
-package br.com.builders.api.cliente.exception;
+package br.com.builders.domain.exception;
 
 public class ClienteJaCadastradoException extends BusinessException {
 

@@ -1,5 +1,6 @@
 package br.com.builders.api.cliente.exception;
 
+import br.com.builders.domain.exception.BusinessException;
 import org.springframework.http.HttpStatus;
 
 import lombok.Getter;

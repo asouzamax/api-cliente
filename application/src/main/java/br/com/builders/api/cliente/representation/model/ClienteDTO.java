@@ -24,6 +24,6 @@ public class ClienteDTO extends BaseDTO {
 	@NotNull
 	private String ultimoNome;
 	@NotNull
-	private String idade;
+	private Integer idade;
 
 }

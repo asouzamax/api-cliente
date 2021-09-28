@@ -5,8 +5,8 @@ import javax.validation.Valid;
 import br.com.builders.api.cliente.adapter.jpa.ClienteQueryRepository;
 import br.com.builders.api.cliente.entity.jpa.ClienteEntity;
 import br.com.builders.api.cliente.entity.mapper.ClienteRestMapper;
-import br.com.builders.domain.entity.Cliente;
 import br.com.builders.api.cliente.exception.ClienteNaoEncontradoHttpException;
+import br.com.builders.domain.entity.Cliente;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -30,7 +30,7 @@ import java.util.Map;
 
 @Api(tags = { "Operações de cliente" })
 @RestController
-@RequestMapping("cliente")
+@RequestMapping("clientes")
 @RequiredArgsConstructor
 public class ClienteRest extends MapperRest<Cliente, ClienteDTO> {
 
@@ -91,7 +91,7 @@ public class ClienteRest extends MapperRest<Cliente, ClienteDTO> {
 			@ApiResponse(code = 400, message = "Erros negociais: validações da dados e fluxo", response = Error.class),
 			@ApiResponse(code = 500, message = "Erros não experados")
 	})
-	@GetMapping("/clientes")
+	@GetMapping
 	public ResponseEntity<Map<String, Object>> getAllClientes(
 			@RequestParam(required = false) String nome,
 			@RequestParam(defaultValue = "0") int page,
@@ -99,7 +99,6 @@ public class ClienteRest extends MapperRest<Cliente, ClienteDTO> {
 	) {
 
 		try {
-			List<ClienteEntity> clientes = new ArrayList<ClienteEntity> ();
 			Pageable paging = PageRequest.of(page, size);
 
 			Page<ClienteEntity> pageClientes;
@@ -108,7 +107,7 @@ public class ClienteRest extends MapperRest<Cliente, ClienteDTO> {
 			else
 				pageClientes = clienteQueryRepository.findByNomeContaining (nome, paging);
 
-			clientes = pageClientes.getContent();
+			List<ClienteEntity> clientes = pageClientes.getContent();
 
 			Map<String, Object> response = new HashMap<> ();
 			response.put("clientes", clientes);

@@ -33,7 +33,7 @@ public class Swagger implements WebMvcConfigurer {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("br.com.builders.api.rest")).paths(PathSelectors.any())
+				.apis(RequestHandlerSelectors.basePackage("br.com.builders.api.cliente.rest")).paths(PathSelectors.any())
 				.build().apiInfo(apiInfo()).useDefaultResponseMessages(false);
 	}
 
@@ -55,8 +55,8 @@ public class Swagger implements WebMvcConfigurer {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfo(nome, descricao, versao, "App para controle de pedidos de venda",
-				new Contact("Sankhya Tech", "https://www.sankhya.com.br", "sankhya@sankhya.com.br"), "MIT",
+		return new ApiInfo(nome, descricao, versao, "App para controle de cliente",
+				new Contact("Anderson Alves", "https://github.com/asouzamax/api-cliente", "asouzamax@gmail.com"), "MIT",
 				"https://opensource.org/licenses/MIT", Collections.emptyList());
 	}
 
