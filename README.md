@@ -20,8 +20,11 @@ Como mostra a figura acima, a arquitetura deve ser muito explícita com relaçã
 
 ### 3 - Techs e stacks:
 
+* Java 11
+* SpringBoot para exposição da API
 * Maven
-* Banco de dados - PostgreSQL
+* Banco de dados Teste. Console H2 habilitado
+* Banco de dados Produção - PostgreSQL
 * Flyway para migrations
 * Lombok para diminuir verbosidade das classes
 * Model Mapper e [MapperConstruct](https://mapstruct.org/documentation/installation/) para evitar o boilerplate entre os representation e domain models [java-faker](http://modelmapper.org/)
@@ -30,4 +33,5 @@ Como mostra a figura acima, a arquitetura deve ser muito explícita com relaçã
 * Swagger para documentação dos endpoints em http://localhost:8080/api/swagger-ui.html
 * Handlers para validação e erros de negocio (Básico)
 * DockerFile para build do projeto.
+* Docker-compose para rodar o projeto.
 * Cobertura de código com Jacoco. Relatório pode ser visto em: target/site/jacoco/index.html.
